@@ -1,8 +1,6 @@
-import { Button } from "./ui/button";
-
 export function About() {
   return (
-    <section id="nosotros" className="py-20 bg-white">
+    <section id="nosotros" className="py-20 bg-white scroll-mt-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-800 mb-4">
@@ -194,11 +192,6 @@ export function About() {
               <p className="text-gray-600">1149284249</p>
             </div>
           </div>
-        </div>
-
-        {/* CTA */}
-        <div className="mt-16 text-center">
-          <Button size="lg">Contactar Ahora</Button>
         </div>
       </div>
     </section>
