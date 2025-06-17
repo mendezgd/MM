@@ -5,8 +5,8 @@ import { Carousel } from "./carousel";
 
 export function Hero() {
   const heroImages = [
-    "/1.webp",
     "/2.webp",
+    "/1.webp",
     "/3.webp",
     "/4.webp",
     "/5.webp",
