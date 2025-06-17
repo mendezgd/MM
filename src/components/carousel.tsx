@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, TouchEvent } from "react";
 
 interface CarouselProps {
   images: string[];
@@ -12,6 +12,12 @@ export function Carousel({
   interval = 5000,
 }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
+
   // Set up auto-play functionality
   useEffect(() => {
     if (!autoPlay) return;
@@ -37,9 +43,38 @@ export function Carousel({
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
+  const onTouchStart = (e: TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      goToNext();
+    }
+    if (isRightSwipe) {
+      goToPrevious();
+    }
+  };
+
   return (
     <div className="relative w-full h-[300px] sm:h-[400px] md:aspect-[4/3] rounded-lg bg-gray-100">
-      <div className="relative w-full h-full overflow-hidden">
+      <div
+        className="relative w-full h-full overflow-hidden"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         <div
           className="flex w-full h-full transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}

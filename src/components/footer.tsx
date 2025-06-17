@@ -17,7 +17,11 @@ export function Footer() {
               href="/"
               className="flex items-center space-x-2 mb-4 hover:opacity-80 transition-opacity"
             >
-              <img src="/logo.svg" alt="Logo" className="h-12 w-12" />
+              <img
+                src="/logo.svg"
+                alt="Logo"
+                className="h-12 w-12 bg-gray-500 rounded-lg"
+              />
               <span className="text-xl text-gray-100 font-semibold">
                 Lic. Mónica Acuña & Acuña Marcelo
               </span>

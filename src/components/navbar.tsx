@@ -39,13 +39,22 @@ export function Navbar() {
 
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#servicios" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <a
+              href="#servicios"
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+            >
               Servicios
             </a>
-            <a href="#nosotros" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <a
+              href="#nosotros"
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+            >
               Nosotros
             </a>
-            <a href="#contacto" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <a
+              href="#contacto"
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+            >
               Contacto
             </a>
           </div>
