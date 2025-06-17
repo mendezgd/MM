@@ -1,6 +1,9 @@
 export function Services() {
   return (
-    <section id="servicios" className="py-20 bg-gradient-to-b from-white to-primary-50 scroll-mt-24">
+    <section
+      id="servicios"
+      className="py-20 bg-gradient-to-b from-white to-primary-50 scroll-mt-24"
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -22,7 +25,8 @@ export function Services() {
               <li className="flex items-start">
                 <span className="text-primary-600 mr-2">•</span>
                 <span className="text-gray-700">
-                  Liquidación de expensas en los primeros 5 días hábiles
+                  Liquidación de expensas en los primeros 5 días hábiles, en el
+                  caso que sea requerido formato papel
                 </span>
               </li>
               <li className="flex items-start">
@@ -49,8 +53,8 @@ export function Services() {
               <li className="flex items-start">
                 <span className="text-primary-600 mr-2">•</span>
                 <span className="text-gray-700">
-                  Grupo de WhatsApp con el Consejo para comunicación diaria y
-                  seguimiento de trabajos
+                  Grupo de WhatsApp (copropietarios) para información relevante
+                  si así lo desean todos
                 </span>
               </li>
               <li className="flex items-start">
@@ -77,8 +81,11 @@ export function Services() {
               <li className="flex items-start">
                 <span className="text-primary-600 mr-2">•</span>
                 <span className="text-gray-700">
-                  Diagnóstico inicial mediante recorrida de instalaciones y
-                  evaluación de unidades funcionales
+                  Diagnóstico inicial mediante una recorrida de las
+                  instalaciones con los profesionales a cada área
+                  correspondiente con filmaciones incluidas y fotos para
+                  informar en asamblea y consejo más evaluaciones en unidades
+                  funcionales en conjunto con los copropietarios
                 </span>
               </li>
               <li className="flex items-start">
@@ -91,8 +98,9 @@ export function Services() {
               <li className="flex items-start">
                 <span className="text-primary-600 mr-2">•</span>
                 <span className="text-gray-700">
-                  Gestión de trabajos de mantenimiento y reparaciones con
-                  transparencia
+                  Gestión de trabajos de mantenimiento y reparaciones con la
+                  mayor eficacia con filmaciones de inicio, mediadios y final de
+                  cada obra
                 </span>
               </li>
             </ul>
