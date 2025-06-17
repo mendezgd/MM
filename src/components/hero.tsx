@@ -22,7 +22,7 @@ export function Hero() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex-1 space-y-8 text-center md:text-left">
             <h1 className="text-5xl font-bold leading-tight text-gray-900">
-              Auditorías y Administración
+              Administración de Consorcios y Auditorías
             </h1>
             <p className="text-xl text-gray-700">
               Gestionamos tu consorcio con eficiencia y compromiso. Más de 15
