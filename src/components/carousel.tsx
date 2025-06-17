@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface CarouselProps {
   images: string[];
@@ -8,11 +8,11 @@ interface CarouselProps {
 
 export function Carousel({
   images,
-  autoPlay = true,
+  autoPlay = false,
   interval = 5000,
 }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  // Set up auto-play functionality
   useEffect(() => {
     if (!autoPlay) return;
 
@@ -22,6 +22,10 @@ export function Carousel({
 
     return () => clearInterval(timer);
   }, [autoPlay, interval, images.length]);
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+  };
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) =>
@@ -34,14 +38,26 @@ export function Carousel({
   };
 
   return (
-    <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg">
-      {/* Main image container */}
-      <div className="relative w-full h-full flex items-center justify-center">
-        <img
-          src={images[currentIndex]}
-          alt={`Slide ${currentIndex + 1}`}
-          className="w-full h-full object-contain transition-all duration-500"
-        />
+    <div className="relative w-full h-[300px] sm:h-[400px] md:aspect-[4/3] rounded-lg bg-gray-100">
+      <div className="relative w-full h-full overflow-hidden">
+        <div
+          className="flex w-full h-full transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className="min-w-full h-full flex items-center justify-center"
+            >
+              <img
+                src={image}
+                alt={`Slide ${index + 1}`}
+                className="w-full h-full object-contain"
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Overlay gradient for better button visibility */}
@@ -50,7 +66,7 @@ export function Carousel({
       {/* Navigation buttons */}
       <button
         onClick={goToPrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-800 p-2 rounded-full hover:bg-white transition-colors z-10 shadow-lg"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-800 p-1.5 sm:p-2 rounded-full hover:bg-white transition-colors z-10 shadow-lg"
         aria-label="Previous slide"
       >
         <svg
@@ -59,7 +75,7 @@ export function Carousel({
           viewBox="0 0 24 24"
           strokeWidth={2}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-4 h-4 sm:w-6 sm:h-6"
         >
           <path
             strokeLinecap="round"
@@ -71,7 +87,7 @@ export function Carousel({
 
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-800 p-2 rounded-full hover:bg-white transition-colors z-10 shadow-lg"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-800 p-1.5 sm:p-2 rounded-full hover:bg-white transition-colors z-10 shadow-lg"
         aria-label="Next slide"
       >
         <svg
@@ -80,7 +96,7 @@ export function Carousel({
           viewBox="0 0 24 24"
           strokeWidth={2}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-4 h-4 sm:w-6 sm:h-6"
         >
           <path
             strokeLinecap="round"
@@ -91,12 +107,12 @@ export function Carousel({
       </button>
 
       {/* Dots indicator */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+      <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1.5 sm:space-x-2 z-10">
         {images.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-2.5 h-2.5 rounded-full transition-colors ${
+            onClick={() => goToSlide(index)}
+            className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-colors ${
               index === currentIndex
                 ? "bg-white shadow-lg"
                 : "bg-white/50 hover:bg-white/75"
