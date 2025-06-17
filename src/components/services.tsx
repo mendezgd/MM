@@ -63,12 +63,6 @@ export function Services() {
                   Informes mensuales detallados por correo electrónico
                 </span>
               </li>
-              <li className="flex items-start">
-                <span className="text-primary-600 mr-2">•</span>
-                <span className="text-gray-700">
-                  Grupo de WhatsApp para propietarios con información relevante
-                </span>
-              </li>
             </ul>
           </div>
 
