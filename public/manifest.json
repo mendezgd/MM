@@ -1,0 +1,31 @@
+{
+  "name": "MM - Administración de Consorcios y Auditorías",
+  "short_name": "MM Administración",
+  "description": "Administración profesional de consorcios y auditorías con más de 15 años de experiencia",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1f2937",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "es-AR",
+  "dir": "ltr"
+} 

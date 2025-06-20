@@ -1,4 +1,12 @@
-import { useEffect, useState, TouchEvent } from "react";
+import {
+  useEffect,
+  useState,
+  TouchEvent,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
+import { OptimizedImage } from "./ui/optimized-image";
 
 interface CarouselProps {
   images: string[];
@@ -14,45 +22,91 @@ export function Carousel({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
 
   // Minimum swipe distance (in px)
   const minSwipeDistance = 50;
 
-  // Set up auto-play functionality
-  useEffect(() => {
-    if (!autoPlay) return;
-
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [autoPlay, interval, images.length]);
-
-  const goToSlide = (index: number) => {
+  // Memoize navigation functions to prevent unnecessary re-renders
+  const goToSlide = useCallback((index: number) => {
     setCurrentIndex(index);
-  };
+  }, []);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
-  };
+  }, [images.length]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
+  }, [images.length]);
 
-  const onTouchStart = (e: TouchEvent) => {
+  // Set up auto-play functionality with cleanup
+  useEffect(() => {
+    if (!autoPlay) {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+        autoPlayRef.current = null;
+      }
+      return;
+    }
+
+    autoPlayRef.current = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, interval);
+
+    return () => {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+        autoPlayRef.current = null;
+      }
+    };
+  }, [autoPlay, interval, images.length]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (
+        carouselRef.current &&
+        carouselRef.current.contains(event.target as Node)
+      ) {
+        switch (event.key) {
+          case "ArrowLeft":
+            event.preventDefault();
+            goToPrevious();
+            break;
+          case "ArrowRight":
+            event.preventDefault();
+            goToNext();
+            break;
+          case "Home":
+            event.preventDefault();
+            goToSlide(0);
+            break;
+          case "End":
+            event.preventDefault();
+            goToSlide(images.length - 1);
+            break;
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [goToNext, goToPrevious, goToSlide, images.length]);
+
+  const onTouchStart = useCallback((e: TouchEvent) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
-  };
+  }, []);
 
-  const onTouchMove = (e: TouchEvent) => {
+  const onTouchMove = useCallback((e: TouchEvent) => {
     setTouchEnd(e.targetTouches[0].clientX);
-  };
+  }, []);
 
-  const onTouchEnd = () => {
+  const onTouchEnd = useCallback(() => {
     if (!touchStart || !touchEnd) return;
 
     const distance = touchStart - touchEnd;
@@ -65,10 +119,25 @@ export function Carousel({
     if (isRightSwipe) {
       goToPrevious();
     }
-  };
+  }, [touchStart, touchEnd, goToNext, goToPrevious]);
+
+  // Memoize the transform style to prevent unnecessary re-renders
+  const transformStyle = useMemo(
+    () => ({
+      transform: `translateX(-${currentIndex * 100}%)`,
+    }),
+    [currentIndex]
+  );
 
   return (
-    <div className="relative w-full h-[300px] sm:h-[400px] md:aspect-[4/3] rounded-lg bg-gray-100">
+    <div
+      ref={carouselRef}
+      className="relative w-full h-[300px] sm:h-[400px] md:aspect-[4/3] rounded-lg bg-gray-100"
+      role="region"
+      aria-label="Galería de imágenes"
+      aria-live="polite"
+      tabIndex={0}
+    >
       <div
         className="relative w-full h-full overflow-hidden"
         onTouchStart={onTouchStart}
@@ -77,18 +146,22 @@ export function Carousel({
       >
         <div
           className="flex w-full h-full transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          style={transformStyle}
+          aria-label="Lista de imágenes"
         >
           {images.map((image, index) => (
             <div
               key={index}
               className="min-w-full h-full flex items-center justify-center"
+              aria-hidden={index !== currentIndex}
+              aria-label={`Imagen ${index + 1} de ${images.length}`}
             >
-              <img
+              <OptimizedImage
                 src={image}
-                alt={`Slide ${index + 1}`}
+                alt={`Imagen de administración de consorcios ${index + 1}`}
                 className="w-full h-full object-contain"
-                loading={index === 0 ? "eager" : "lazy"}
+                priority={index === 0}
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           ))}
@@ -101,8 +174,8 @@ export function Carousel({
       {/* Navigation buttons */}
       <button
         onClick={goToPrevious}
-        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-800 p-1.5 sm:p-2 rounded-full hover:bg-white transition-colors z-10 shadow-lg"
-        aria-label="Previous slide"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-800 p-1.5 sm:p-2 rounded-full hover:bg-white transition-colors z-10 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+        aria-label="Imagen anterior"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -111,6 +184,7 @@ export function Carousel({
           strokeWidth={2}
           stroke="currentColor"
           className="w-4 h-4 sm:w-6 sm:h-6"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
@@ -122,8 +196,8 @@ export function Carousel({
 
       <button
         onClick={goToNext}
-        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-800 p-1.5 sm:p-2 rounded-full hover:bg-white transition-colors z-10 shadow-lg"
-        aria-label="Next slide"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 text-gray-800 p-1.5 sm:p-2 rounded-full hover:bg-white transition-colors z-10 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+        aria-label="Imagen siguiente"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -132,6 +206,7 @@ export function Carousel({
           strokeWidth={2}
           stroke="currentColor"
           className="w-4 h-4 sm:w-6 sm:h-6"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
@@ -142,19 +217,28 @@ export function Carousel({
       </button>
 
       {/* Dots indicator */}
-      <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1.5 sm:space-x-2 z-10">
+      <div
+        className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1.5 sm:space-x-2 z-10"
+        aria-label="Navegación de imágenes"
+      >
         {images.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-colors ${
+            className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
               index === currentIndex
                 ? "bg-white shadow-lg"
                 : "bg-white/50 hover:bg-white/75"
             }`}
-            aria-label={`Go to slide ${index + 1}`}
+            aria-label={`Ir a imagen ${index + 1}`}
+            aria-pressed={index === currentIndex}
           />
         ))}
+      </div>
+
+      {/* Screen reader status */}
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        Imagen {currentIndex + 1} de {images.length}
       </div>
     </div>
   );

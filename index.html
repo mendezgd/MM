@@ -1,14 +1,108 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <link rel="apple-touch-icon" href="/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Performance optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <title>MM - Auditorías y Administración</title>
+    <link rel="dns-prefetch" href="https://www.google.com">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"></noscript>
+    
+    <!-- SEO Meta Tags -->
+    <title>MM - Administración de Consorcios y Auditorías | Lic. Mónica Acuña & Acuña Marcelo</title>
+    <meta name="description" content="Administración profesional de consorcios y auditorías. Más de 15 años de experiencia en gestión de propiedades. Servicios integrales de administración, liquidación de expensas y cumplimiento normativo." />
+    <meta name="keywords" content="administración de consorcios, auditorías, gestión de propiedades, liquidación de expensas, administración de edificios, Buenos Aires" />
+    <meta name="author" content="Lic. Mónica Acuña & Acuña Marcelo" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mm-administracion.com/" />
+    <meta property="og:title" content="MM - Administración de Consorcios y Auditorías" />
+    <meta property="og:description" content="Administración profesional de consorcios y auditorías. Más de 15 años de experiencia en gestión de propiedades." />
+    <meta property="og:image" content="/logo.png" />
+    <meta property="og:locale" content="es_AR" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://mm-administracion.com/" />
+    <meta property="twitter:title" content="MM - Administración de Consorcios y Auditorías" />
+    <meta property="twitter:description" content="Administración profesional de consorcios y auditorías. Más de 15 años de experiencia en gestión de propiedades." />
+    <meta property="twitter:image" content="/logo.png" />
+    
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#1f2937" />
+    <meta name="msapplication-TileColor" content="#1f2937" />
+    <link rel="canonical" href="https://mm-administracion.com/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "MM - Administración de Consorcios y Auditorías",
+      "description": "Administración profesional de consorcios y auditorías con más de 15 años de experiencia",
+      "url": "https://mm-administracion.com/",
+      "logo": "https://mm-administracion.com/logo.svg",
+      "image": "https://mm-administracion.com/logo.png",
+      "telephone": "+54-11-XXXX-XXXX",
+      "email": "estudi.ayp@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Buenos Aires",
+        "addressCountry": "AR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-34.6037",
+        "longitude": "-58.3816"
+      },
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "priceRange": "$$",
+      "serviceType": ["Administración de Consorcios", "Auditorías", "Gestión de Propiedades"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de Administración",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Gestión Financiera",
+              "description": "Liquidación de expensas y gestión de pagos"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Comunicación Efectiva",
+              "description": "Informes mensuales y comunicación con propietarios"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Cumplimiento Normativo",
+              "description": "Control de mantenimiento y gestión de seguros"
+            }
+          }
+        ]
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -73,7 +73,7 @@ export function Methodology() {
             href="mailto:estudi.ayp@gmail.com?subject=Solicitud de Información"
             className="inline-flex"
           >
-            <Button className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 text-lg flex items-center gap-2">
+            <Button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 text-lg flex items-center gap-2">
               <Mail className="h-5 w-5" />
               Solicitar Información
             </Button>
