@@ -7,7 +7,7 @@ export function Services() {
     >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 
+          <h2
             id="services-heading"
             className="text-4xl font-bold text-gray-900 mb-4"
           >
@@ -19,30 +19,52 @@ export function Services() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" aria-label="Lista de servicios ofrecidos">
+        <div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          aria-label="Lista de servicios ofrecidos"
+        >
           {/* Gestión Financiera */}
           <article className="bg-white p-8 rounded-lg shadow-lg border border-primary-100 hover:border-primary-300 transition-colors">
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">
               Gestión Financiera
             </h3>
-            <ul className="space-y-4" aria-label="Servicios de gestión financiera">
+            <ul
+              className="space-y-4"
+              aria-label="Servicios de gestión financiera"
+            >
               <li className="flex items-start">
-                <span className="text-primary-600 mr-2" aria-hidden="true">•</span>
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
                 <span className="text-gray-700">
-                  Liquidación de expensas en los primeros 5 días hábiles, en el
-                  caso que sea requerido formato papel
+                  Liquidación de expensas en los primeros 5 días hábiles, envío
+                  de liquidaciones por mail.
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="text-primary-600 mr-2" aria-hidden="true">•</span>
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
                 <span className="text-gray-700">
-                  Envío de liquidaciones por correo electrónico
+                  Envío de expensas en formato papel en el caso que sea
+                  requerido por el consorcio.
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="text-primary-600 mr-2" aria-hidden="true">•</span>
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
                 <span className="text-gray-700">
-                  Gestión de pagos mediante depósito o transferencia bancaria
+                  Análisis financieros mensuales de los fondos y los proyectados
+                  a fin de priorizar urgencias.
+                </span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
+                <span className="text-gray-700">
+                  Cumplimiento de la ordenanza del formato de expensas claras.
                 </span>
               </li>
             </ul>
@@ -55,16 +77,29 @@ export function Services() {
             </h3>
             <ul className="space-y-4" aria-label="Servicios de comunicación">
               <li className="flex items-start">
-                <span className="text-primary-600 mr-2" aria-hidden="true">•</span>
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
                 <span className="text-gray-700">
-                  Grupo de WhatsApp (copropietarios) para información relevante
-                  si así lo desean todos
+                  Grupo de WhatsApp con miembros del consejo, comunicación
+                  activa de todo lo que se va realizando
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="text-primary-600 mr-2" aria-hidden="true">•</span>
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
                 <span className="text-gray-700">
-                  Informes mensuales detallados por correo electrónico
+                  Grupo de WhatsApp (copropietarios, a fin de comunicar
+                  información relevante, si los copropietarios lo desean)
+                </span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
+                <span className="text-gray-700">
+                  Información mensual detallada de trabajos y financiera.
                 </span>
               </li>
             </ul>
@@ -77,7 +112,9 @@ export function Services() {
             </h3>
             <ul className="space-y-4" aria-label="Metodología de trabajo">
               <li className="flex items-start">
-                <span className="text-primary-600 mr-2" aria-hidden="true">•</span>
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
                 <span className="text-gray-700">
                   Diagnóstico inicial mediante una recorrida de las
                   instalaciones con los profesionales a cada área
@@ -87,18 +124,32 @@ export function Services() {
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="text-primary-600 mr-2" aria-hidden="true">•</span>
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
+                <span className="text-gray-700">
+                  Análisis económico financiero de la situación inicial
+                  realizando una observación de la gestión anterior.
+                </span>
+              </li>
+
+              <li className="flex items-start">
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
                 <span className="text-gray-700">
                   Informe técnico-administrativo y plan de trabajo en los
-                  primeros 30 días
+                  primeros 30 días.
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="text-primary-600 mr-2" aria-hidden="true">•</span>
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
                 <span className="text-gray-700">
                   Gestión de trabajos de mantenimiento y reparaciones con la
                   mayor eficacia con filmaciones de inicio, mediadios y final de
-                  cada obra
+                  cada obra.
                 </span>
               </li>
             </ul>
@@ -111,19 +162,26 @@ export function Services() {
             </h3>
             <ul className="space-y-4" aria-label="Servicios adicionales">
               <li className="flex items-start">
-                <span className="text-primary-600 mr-2" aria-hidden="true">•</span>
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
                 <span className="text-gray-700">
-                  Realización de Asambleas de propietarios
+                  Realización de Asambleas de propietarios semestrales y toda
+                  vez que la situación lo amerite.
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="text-primary-600 mr-2" aria-hidden="true">•</span>
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
                 <span className="text-gray-700">
                   Atención personalizada a propietarios
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="text-primary-600 mr-2" aria-hidden="true">•</span>
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
                 <span className="text-gray-700">
                   Gestión de pagos a proveedores y personal
                 </span>
@@ -136,23 +194,56 @@ export function Services() {
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">
               Cumplimiento Normativo
             </h3>
-            <ul className="space-y-4" aria-label="Servicios de cumplimiento normativo">
+            <ul
+              className="space-y-4"
+              aria-label="Servicios de cumplimiento normativo"
+            >
               <li className="flex items-start">
-                <span className="text-primary-600 mr-2" aria-hidden="true">•</span>
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
                 <span className="text-gray-700">
-                  Control de mantenimiento de matafuegos y ascensores
+                  Control de mantenimiento de matafuegos e instalaciones fijas
+                  contra incendio.
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="text-primary-600 mr-2" aria-hidden="true">•</span>
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
                 <span className="text-gray-700">
-                  Gestión de seguros obligatorios
+                  Control de la eficiencia y normas de la seguridad de los
+                  ascensores.
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="text-primary-600 mr-2" aria-hidden="true">•</span>
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
                 <span className="text-gray-700">
-                  Cumplimiento de la Resolución Nro. 408 SECGCYAC
+                  Cumplimiento de Resolución Nº 408 SECGCYAC
+                </span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
+                <span className="text-gray-700">
+                  Buenas prácticas consorciales.
+                </span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
+                <span className="text-gray-700">Gestión de ley 257.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
+                <span className="text-gray-700">
+                  Aplicación de Ley 6040 GCBA, y su Decreto 405/18.
                 </span>
               </li>
             </ul>
