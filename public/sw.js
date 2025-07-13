@@ -2,13 +2,11 @@ const CACHE_NAME = 'mm-administracion-v1'
 const STATIC_CACHE = 'mm-static-v1'
 const DYNAMIC_CACHE = 'mm-dynamic-v1'
 
-// Assets to cache immediately
+// Assets to cache immediately - only essential files
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/logo.svg',
-  '/manifest.json',
-  '/favicon.ico'
+  '/logo.svg'
 ]
 
 // Assets to cache on demand
@@ -26,14 +24,22 @@ self.addEventListener('install', (event) => {
     caches.open(STATIC_CACHE)
       .then((cache) => {
         console.log('Caching static assets')
-        return cache.addAll(STATIC_ASSETS)
+        // Cache files one by one to avoid failures
+        return Promise.allSettled(
+          STATIC_ASSETS.map(url => 
+            cache.add(url).catch(error => {
+              console.warn(`Failed to cache ${url}:`, error)
+              return null
+            })
+          )
+        )
       })
       .then(() => {
         console.log('Static assets cached successfully')
         return self.skipWaiting()
       })
       .catch((error) => {
-        console.error('Error caching static assets:', error)
+        console.error('Error in service worker install:', error)
       })
   )
 })

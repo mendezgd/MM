@@ -23,6 +23,7 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
     "optimize:images": "node scripts/optimize-images.js",
+    "clean": "node scripts/clean.js",
     "analyze": "npm run build:analyze && npx vite-bundle-analyzer dist/stats.html"
   },
   "dependencies": {
