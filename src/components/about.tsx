@@ -1,17 +1,4 @@
-import { Carousel } from "./carousel";
-
 export function About() {
-  const aboutImages = [
-    "/10.webp",
-    "/11.webp",
-    "/12.webp",
-    "/14.webp",
-    "/15.webp",
-    "/16.webp",
-    "/17.webp",
-    "/18.webp",
-  ];
-
   return (
     <section id="nosotros" className="py-20 bg-white scroll-mt-24">
       <div className="container mx-auto px-4">
@@ -83,23 +70,6 @@ export function About() {
                 </ul>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Segundo Carousel - Galería de Trabajos */}
-        <div className="mt-20">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-800 mb-4">
-              Nuestros Trabajos y Proyectos
-            </h3>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Conoce algunos de nuestros proyectos más destacados en
-              administración de consorcios
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <Carousel images={aboutImages} autoPlay={true} interval={5000} />
           </div>
         </div>
       </div>

@@ -5,19 +5,21 @@ import { Carousel } from "./carousel";
 
 export function Hero() {
   const heroImages = [
-    "/2.webp",
-    "/1.webp",
-    "/3.webp",
-    "/4.webp",
-    "/5.webp",
-    "/6.webp",
-    "/7.webp",
-    "/8.webp",
-    "/9.webp",
+    "/21.webp",
+    "/11.webp",
+    "/10.webp",
+    "/12.webp",
+    "/15.webp",
+    "/16.webp",
+    "/17.webp",
+    "/18.webp",
+    "/19.webp",
+    "/20.webp",
+    "/22.webp",
   ];
 
   return (
-    <section 
+    <section
       className="pt-32 pb-20 bg-gradient-to-b from-primary-50 to-white"
       aria-labelledby="hero-heading"
       role="banner"
@@ -25,7 +27,7 @@ export function Hero() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex-1 space-y-8 text-center md:text-left">
-            <h1 
+            <h1
               id="hero-heading"
               className="text-5xl font-bold leading-tight text-gray-900"
             >
@@ -60,7 +62,10 @@ export function Hero() {
               </a>
             </div>
           </div>
-          <div className="flex-1" aria-label="Galería de imágenes de administración de consorcios">
+          <div
+            className="flex-1"
+            aria-label="Galería de imágenes de administración de consorcios"
+          >
             <Carousel images={heroImages} autoPlay={true} interval={4000} />
           </div>
         </div>

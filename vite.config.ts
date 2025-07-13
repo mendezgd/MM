@@ -1,8 +1,8 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import path from "path";
-import { splitVendorChunkPlugin } from "vite";
-import compression from "vite-plugin-compression";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from 'path'
+import { splitVendorChunkPlugin } from 'vite'
+import compression from 'vite-plugin-compression'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -10,29 +10,29 @@ export default defineConfig({
     react(),
     splitVendorChunkPlugin(),
     compression({
-      algorithm: "gzip",
-      ext: ".gz",
+      algorithm: 'gzip',
+      ext: '.gz',
       threshold: 10240, // Only compress files larger than 10kb
     }),
     compression({
-      algorithm: "brotliCompress",
-      ext: ".br",
+      algorithm: 'brotliCompress',
+      ext: '.br',
       threshold: 10240,
     }),
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
   },
   build: {
-    target: "es2015",
-    minify: "terser",
+    target: 'es2015',
+    minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ["console.log", "console.info", "console.debug"],
+        pure_funcs: ['console.log', 'console.info', 'console.debug'],
         passes: 2,
         unsafe: true,
         unsafe_comps: true,
@@ -54,48 +54,42 @@ export default defineConfig({
       output: {
         manualChunks: (id) => {
           // Vendor chunks
-          if (id.includes("node_modules")) {
-            if (id.includes("react") || id.includes("react-dom")) {
-              return "react-vendor";
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'react-vendor'
             }
-            if (id.includes("lucide-react") || id.includes("react-icons")) {
-              return "icons";
+            if (id.includes('lucide-react') || id.includes('react-icons')) {
+              return 'icons'
             }
-            if (id.includes("@radix-ui")) {
-              return "radix-ui";
+            if (id.includes('@radix-ui')) {
+              return 'radix-ui'
             }
-            if (
-              id.includes("clsx") ||
-              id.includes("class-variance-authority") ||
-              id.includes("tailwind-merge")
-            ) {
-              return "utils";
+            if (id.includes('clsx') || id.includes('class-variance-authority') || id.includes('tailwind-merge')) {
+              return 'utils'
             }
             // All other node_modules
-            return "vendor";
+            return 'vendor'
           }
           // Component chunks
-          if (id.includes("/components/")) {
-            if (id.includes("/ui/")) {
-              return "ui-components";
+          if (id.includes('/components/')) {
+            if (id.includes('/ui/')) {
+              return 'ui-components'
             }
-            return "page-components";
+            return 'page-components'
           }
         },
-        chunkFileNames: "assets/js/[name]-[hash].js",
-        entryFileNames: "assets/js/[name]-[hash].js",
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split(".");
-          const ext = info[info.length - 1];
+          const info = assetInfo.name.split('.')
+          const ext = info[info.length - 1]
           if (/\.(css)$/.test(assetInfo.name)) {
-            return `assets/css/[name]-[hash].${ext}`;
+            return `assets/css/[name]-[hash].${ext}`
           }
-          if (
-            /\.(png|jpe?g|svg|gif|tiff|bmp|ico|webp)$/i.test(assetInfo.name)
-          ) {
-            return `assets/images/[name]-[hash].${ext}`;
+          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico|webp)$/i.test(assetInfo.name)) {
+            return `assets/images/[name]-[hash].${ext}`
           }
-          return `assets/[ext]/[name]-[hash].[ext]`;
+          return `assets/[ext]/[name]-[hash].[ext]`
         },
       },
     },
@@ -107,32 +101,44 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: [
-      "react",
-      "react-dom",
-      "lucide-react",
-      "react-icons",
-      "clsx",
-      "class-variance-authority",
-      "tailwind-merge",
+      'react', 
+      'react-dom', 
+      'lucide-react',
+      'react-icons',
+      'clsx',
+      'class-variance-authority',
+      'tailwind-merge'
     ],
-    exclude: ["@radix-ui/react-slot"],
+    exclude: ['@radix-ui/react-slot'],
   },
   server: {
     host: true,
     port: 5173,
     strictPort: false,
     headers: {
-      "Cache-Control": "public, max-age=31536000, immutable",
+      'Cache-Control': 'public, max-age=31536000, immutable',
     },
     hmr: {
-      host: "localhost",
+      host: 'localhost',
       port: 5173,
-      protocol: "ws",
+      protocol: 'ws',
     },
   },
   preview: {
     headers: {
-      "Cache-Control": "public, max-age=31536000, immutable",
+      'Cache-Control': 'public, max-age=31536000, immutable',
     },
   },
-});
+  // Performance optimizations
+  esbuild: {
+    target: 'es2015',
+    supported: {
+      'top-level-await': true
+    },
+  },
+  // CSS optimizations
+  css: {
+    postcss: './postcss.config.js',
+  },
+})
+

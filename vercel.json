@@ -17,6 +17,20 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    },
+    {
+      "source": "/(.*\\.(js|css|webp|svg|png|jpg|jpeg|gif|ico|woff|woff2|ttf|eot))",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
-  ]
+  ],
+  "functions": {
+    "dist/index.html": {
+      "maxDuration": 10
+    }
+  }
 } 
