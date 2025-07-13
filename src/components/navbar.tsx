@@ -19,37 +19,42 @@ export function Navbar() {
   // Handle escape key to close menu
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isMenuOpen) {
+      if (event.key === "Escape" && isMenuOpen) {
         closeMenu();
         buttonRef.current?.focus();
       }
     };
 
     if (isMenuOpen) {
-      document.addEventListener('keydown', handleEscape);
-      return () => document.removeEventListener('keydown', handleEscape);
+      document.addEventListener("keydown", handleEscape);
+      return () => document.removeEventListener("keydown", handleEscape);
     }
   }, [isMenuOpen, closeMenu]);
 
   // Handle click outside to close menu
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node) && 
-          buttonRef.current && !buttonRef.current.contains(event.target as Node)) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
         closeMenu();
       }
     };
 
     if (isMenuOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
+      return () =>
+        document.removeEventListener("mousedown", handleClickOutside);
     }
   }, [isMenuOpen, closeMenu]);
 
   return (
-    <nav 
-      className="fixed w-full bg-white/80 backdrop-blur-sm z-50 border-b" 
-      role="navigation" 
+    <nav
+      className="fixed w-full bg-white/80 backdrop-blur-sm z-50 border-b"
+      role="navigation"
       aria-label="Navegación principal"
     >
       <div className="container mx-auto px-4 py-4">
@@ -59,7 +64,11 @@ export function Navbar() {
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"
             aria-label="Ir al inicio - MM Administración de Consorcios"
           >
-            <img src="/logo.svg" alt="Logo MM Administración" className="h-12 w-12" />
+            <img
+              src="/logo.svg"
+              alt="Logo MM Administración"
+              className="h-12 w-12"
+            />
             <span className="text-xl font-semibold text-gray-800">
               Lic. Mónica Acuña & Acuña Marcelo
             </span>

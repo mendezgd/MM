@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef } from "react";
 
 interface OptimizedImageProps {
   src: string;
@@ -13,11 +13,11 @@ interface OptimizedImageProps {
 export function OptimizedImage({
   src,
   alt,
-  className = '',
+  className = "",
   width,
   height,
   priority = false,
-  sizes = '100vw',
+  sizes = "100vw",
 }: OptimizedImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -43,15 +43,15 @@ export function OptimizedImage({
         width={width}
         height={height}
         sizes={sizes}
-        loading={priority ? 'eager' : 'lazy'}
+        loading={priority ? "eager" : "lazy"}
         onLoad={handleLoad}
         onError={handleError}
         className={`transition-opacity duration-300 ${
-          isLoaded ? 'opacity-100' : 'opacity-0'
+          isLoaded ? "opacity-100" : "opacity-0"
         } ${className}`}
         decoding="async"
-        fetchPriority={priority ? 'high' : 'auto'}
+        fetchPriority={priority ? "high" : "auto"}
       />
     </div>
   );
-} 
+}
