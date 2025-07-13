@@ -5,7 +5,6 @@ export function About() {
     "/10.webp",
     "/11.webp",
     "/12.webp",
-    "/13.webp",
     "/14.webp",
     "/15.webp",
     "/16.webp",
