@@ -26,19 +26,19 @@ export function Methodology() {
                 <span className="text-gray-600">
                   Control de matafuegos e instalaciones fijas contra incendio
                   ISO 9001:2015 ISO 14001:2015 OHSAS 18001:2007 más los controles
-                  trimestrales obligatorios
+                  trimestrales obligatorios.
                 </span>
               </li>
               <li className="flex items-start">
                 <span className="text-blue-600 mr-2">•</span>
                 <span className="text-gray-600">
-                  Fomento de competencia entre ofertas
+                  Fomento de competencia entre ofertas.
                 </span>
               </li>
               <li className="flex items-start">
                 <span className="text-blue-600 mr-2">•</span>
                 <span className="text-gray-600">
-                  Garantía de eficiencia en la selección
+                  Garantía de eficiencia en la selección.
                 </span>
               </li>
             </ul>
@@ -57,7 +57,7 @@ export function Methodology() {
                 <span className="text-blue-600 mr-2">•</span>
                 <span className="text-gray-600">
                   Todos los meses con las expensas se envían los trabajos
-                  realizados más los trabajos pendientes
+                  realizados más los trabajos pendientes.
                 </span>
               </li>
             </ul>

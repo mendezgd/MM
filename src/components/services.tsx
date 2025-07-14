@@ -15,7 +15,7 @@ export function Services() {
           </h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Ofrecemos una gestión integral y profesional para la administración
-            de su consorcio
+            de su consorcio.
           </p>
         </div>
 
@@ -82,7 +82,7 @@ export function Services() {
                 </span>
                 <span className="text-gray-700">
                   Grupo de WhatsApp con miembros del consejo, comunicación
-                  activa de todo lo que se va realizando
+                  activa de todo lo que se va realizando.
                 </span>
               </li>
               <li className="flex items-start">
@@ -91,7 +91,7 @@ export function Services() {
                 </span>
                 <span className="text-gray-700">
                   Grupo de WhatsApp (copropietarios, a fin de comunicar
-                  información relevante, si los copropietarios lo desean)
+                  información relevante, si los copropietarios lo desean).
                 </span>
               </li>
               <li className="flex items-start">
@@ -120,7 +120,7 @@ export function Services() {
                   instalaciones con los profesionales a cada área
                   correspondiente con filmaciones incluidas y fotos para
                   informar en asamblea y consejo más evaluaciones en unidades
-                  funcionales en conjunto con los copropietarios
+                  funcionales en conjunto con los copropietarios.
                 </span>
               </li>
               <li className="flex items-start">
@@ -175,7 +175,7 @@ export function Services() {
                   •
                 </span>
                 <span className="text-gray-700">
-                  Atención personalizada a propietarios
+                  Atención personalizada a propietarios.
                 </span>
               </li>
               <li className="flex items-start">
@@ -183,7 +183,15 @@ export function Services() {
                   •
                 </span>
                 <span className="text-gray-700">
-                  Gestión de pagos a proveedores y personal
+                  Gestión de pagos a proveedores y personal.
+                </span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-primary-600 mr-2" aria-hidden="true">
+                  •
+                </span>
+                <span className="text-gray-700">
+                  Realizamos auditoría de gestión.
                 </span>
               </li>
             </ul>
@@ -221,7 +229,7 @@ export function Services() {
                   •
                 </span>
                 <span className="text-gray-700">
-                  Cumplimiento de Resolución Nº 408 SECGCYAC
+                  Cumplimiento de Resolución Nº 408 SECGCYAC.
                 </span>
               </li>
               <li className="flex items-start">

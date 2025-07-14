@@ -24,7 +24,7 @@ export function Footer() {
                 className="h-12 w-12 bg-gray-500 rounded-lg"
               />
               <span className="text-xl text-gray-100 font-semibold">
-                Lic. Mónica Acuña & Acuña Marcelo
+                 Administración Acuña - Lic. Mónica Acuña & Acuña Marcelo
               </span>
             </a>
             <p className="text-gray-300">
