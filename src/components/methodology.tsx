@@ -18,11 +18,8 @@ export function Methodology() {
           {/* Mantenimiento y Reparaciones */}
           <div className="bg-white p-8 rounded-lg shadow-lg">
             <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-              Mantenimiento y Reparaciones
+              Mantenimiento
             </h3>
-            <p className="text-gray-600 mb-4">
-              Para trabajos importantes o cambios de proveedores:
-            </p>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <span className="text-blue-600 mr-2">•</span>

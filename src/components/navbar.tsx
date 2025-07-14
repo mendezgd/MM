@@ -70,7 +70,7 @@ export function Navbar() {
               className="h-12 w-12"
             />
             <span className="text-xl font-semibold text-gray-800">
-              Lic. Mónica Acuña & Acuña Marcelo
+              Administración Acuña - Lic. Mónica Acuña & Acuña Marcelo
             </span>
           </a>
 

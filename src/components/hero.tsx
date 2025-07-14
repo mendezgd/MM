@@ -35,7 +35,7 @@ export function Hero() {
             </h1>
             <p className="text-xl text-gray-700">
               Gestionamos tu consorcio con eficiencia y compromiso. Más de 15
-              años de experiencia en la administración de propiedades.
+              años de experiencia en la administración de la propiedad horizontal.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <a
